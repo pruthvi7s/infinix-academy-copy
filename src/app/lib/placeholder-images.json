@@ -1,0 +1,89 @@
+{
+    "infinixLogo": {
+        "src": "https://i.postimg.cc/PfcYfJWm/Chat-GPT-Image-Jun-21-2025-04-40-45-PM.png",
+        "alt": "Infinix Academy Logo",
+        "dataAiHint": "logo brand"
+    },
+    "defaultUserAvatar": {
+        "src": "https://i.postimg.cc/8CKmB6sC/1792611-removebg-preview.png",
+        "alt": "Default User Avatar",
+        "dataAiHint": "user avatar"
+    },
+    "maleAvatar": {
+        "src": "https://i.postimg.cc/Mpg4X0mb/Chat-GPT-Image-Aug-14-2025-07-06-54-PM.png",
+        "alt": "Male Avatar",
+        "dataAiHint": "user avatar"
+    },
+    "femaleAvatar": {
+        "src": "https://i.postimg.cc/QxH059t6/Chat-GPT-Image-Aug-14-2025-07-06-52-PM.png",
+        "alt": "Female Avatar",
+        "dataAiHint": "user avatar"
+    },
+    "paymentQr": {
+        "phonePe": {
+            "src": "https://i.postimg.cc/598KRRyw/QR-phone-pay.jpg",
+            "alt": "PhonePe QR Code",
+            "dataAiHint": "payment qr"
+        },
+        "googlePay": {
+            "src": "https://i.postimg.cc/h48MrQZw/QR-google-pay.jpg",
+            "alt": "Google Pay QR Code",
+            "dataAiHint": "payment qr"
+        }
+    },
+    "trendingCourses": [
+        {
+            "title": "How to manage your money so you may never go broke",
+            "image": "https://img.youtube.com/vi/VaiqGsot5ws/hqdefault.jpg",
+            "dataAiHint": "money management finance"
+        },
+        {
+            "title": "Time Management",
+            "image": "https://img.youtube.com/vi/7ax4Tb5G1P4/hqdefault.jpg",
+            "dataAiHint": "time management productivity"
+        },
+        {
+            "title": "Canva for Beginners",
+            "image": "https://img.youtube.com/vi/rXLvN1FEkOE/hqdefault.jpg",
+            "dataAiHint": "graphic design canva"
+        },
+        {
+            "title": "Finding your purpose (ikigai art of living)",
+            "image": "https://img.youtube.com/vi/4LE5bel_GvU/hqdefault.jpg",
+            "dataAiHint": "career purpose ikigai"
+        },
+        {
+            "title": "15 Assets That Are Making People Rich",
+            "image": "https://img.youtube.com/vi/BKoTLf_D4xo/hqdefault.jpg",
+            "dataAiHint": "investing assets wealth"
+        },
+        {
+            "title": "Laws of Human Nature",
+            "image": "https://img.youtube.com/vi/R-iIQ0kQni0/hqdefault.jpg",
+            "dataAiHint": "psychology human nature"
+        },
+        {
+            "title": "best resume templet",
+            "image": "https://img.youtube.com/vi/ZcuziWFfpQY/hqdefault.jpg",
+            "dataAiHint": "resume design career"
+        }
+    ],
+    "team": {
+        "founder": {
+            "src": "https://i.postimg.cc/Jz2tbqk8/Profile-PIC.png",
+            "alt": "Pruthvi P, Founder & CEO",
+            "dataAiHint": "founder portrait"
+        },
+        "team": {
+            "src": "https://i.postimg.cc/PfcYfJWm/Chat-GPT-Image-Jun-21-2025-04-40-45-PM.png",
+            "alt": "Infinix Team",
+            "dataAiHint": "team photo"
+        }
+    },
+    "books": {
+        "richDadPoorDad": {
+            "src": "https://i.postimg.cc/8P9hVz03/rich-dad-poor-dad.jpg",
+            "dataAiHint": "book cover finance"
+        }
+    }
+}

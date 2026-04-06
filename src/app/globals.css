@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* White */
+    --foreground: 0 0% 3.9%; /* Black */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 0 0% 3.9%; /* Black */
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 0 0% 3.9%; /* Black */
+    --primary: 39 92% 56%; /* Golden Orange from image */
+    --primary-foreground: 39 80% 10%; /* Darker shade for text on primary */
+    --secondary: 0 0% 96.1%; /* Light Gray */
+    --secondary-foreground: 0 0% 9%; /* Dark Gray */
+    --muted: 0 0% 96.1%; /* Light Gray */
+    --muted-foreground: 0 0% 45.1%; /* Medium Gray */
+    --accent: 39 92% 56%; /* Golden Orange from image */
+    --accent-foreground: 39 80% 10%; /* Darker shade for text on accent */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%; /* Gray border */
+    --input: 0 0% 89.8%;
+    --ring: 39 92% 56%; /* Golden Orange from image */
+    --chart-1: 39 92% 56%;
+    --chart-2: 39 80% 66%;
+    --chart-3: 39 70% 76%;
+    --chart-4: 0 0% 60%;
+    --chart-5: 0 0% 40%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%; /* Black */
+    --foreground: 0 0% 98%; /* White */
+    --card: 0 0% 10%; /* Darker Gray */
+    --card-foreground: 0 0% 98%; /* White */
+    --popover: 0 0% 3.9%; /* Black */
+    --popover-foreground: 0 0% 98%; /* White */
+    --primary: 39 92% 56%; /* Golden Orange from image */
+    --primary-foreground: 39 80% 10%; /* Darker shade for text on primary */
+    --secondary: 0 0% 14.9%; /* Dark Gray */
+    --secondary-foreground: 0 0% 98%; /* White */
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%; /* Lighter Gray */
+    --accent: 39 92% 56%; /* Golden Orange from image */
+    --accent-foreground: 39 80% 10%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 39 92% 56%;
+    --chart-1: 39 92% 56%;
+    --chart-2: 39 80% 66%;
+    --chart-3: 39 70% 76%;
+    --chart-4: 0 0% 60%;
+    --chart-5: 0 0% 80%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer utilities {
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}
