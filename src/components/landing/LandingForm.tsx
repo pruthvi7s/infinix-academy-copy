@@ -75,6 +75,7 @@ export default function LandingForm({ isSignUp = false }: { isSignUp?: boolean }
           });
         }
       } catch (error) {
+        console.error("Sign-up error in LandingForm:", error);
         toast({
           title: "Sign-up Failed",
           description: "An unexpected error occurred. Please try again.",

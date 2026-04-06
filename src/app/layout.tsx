@@ -4,6 +4,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { AssessmentProvider } from '@/context/AssessmentContext';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
+import ErrorBoundary from "@/components/ui/ErrorBoundary";
 
 export const metadata: Metadata = {
   title: {
@@ -29,17 +30,19 @@ export default function RootLayout({
         <meta name="theme-color" content="#4285F4" />
       </head>
       <body className="font-body antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <AssessmentProvider>
-            {children}
-            <Toaster />
-          </AssessmentProvider>
-        </ThemeProvider>
+        <ErrorBoundary>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <AssessmentProvider>
+              {children}
+              <Toaster />
+            </AssessmentProvider>
+          </ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );
