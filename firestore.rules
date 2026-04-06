@@ -4,64 +4,69 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     
-    // Helper function to check if the requesting user is an admin by looking at their role
-    // in their own user document.
+    // --- Helper Functions ---
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
     function isAdmin() {
-      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+      let userDoc = get(/databases/$(database)/documents/users/$(request.auth.uid));
+      return userDoc.data != null && userDoc.data.role == 'admin';
     }
 
     // --- Student Data Rules ---
+    
+    // Validate student data structure
+    function isValidStudent(data) {
+      // Enforce size limits on all string fields to prevent DoS
+      return data.name is string && data.name.size() < 100 &&
+             data.email is string && data.email.size() < 100 &&
+             (data.experiencePoints is number || !('experiencePoints' in data)) &&
+             (data.savedCourses is list || !('savedCourses' in data)) &&
+             (data.completedLessons is map || !('completedLessons' in data)) &&
+             (data.completedProjects is list || !('completedProjects' in data));
+    }
+
     match /students/{studentId} {
-      // Admins have full read/write access to all student documents.
-      allow read, write: if isAdmin();
-      
-      // A student can only read, create, or update their OWN document. They cannot delete it.
-      allow read, create, update: if request.auth.uid == studentId;
-      allow delete: if false; // Students cannot delete their own records.
+      allow read: if isOwner(studentId) || isAdmin();
+      allow create: if isOwner(studentId) && isValidStudent(request.resource.data);
+      allow update: if isOwner(studentId) && isValidStudent(request.resource.data);
+      allow delete: if false;
     }
     
-    // Admins need list access on the collection to fetch all students for the dashboard.
     match /students/{document=**} {
         allow list: if isAdmin();
     }
 
     // --- User Role Rules ---
     match /users/{userId} {
-      // A user can read their own user document. This is required for the isAdmin() function to work.
-      allow read: if request.auth.uid == userId;
-      
-      // A user can create their own user document upon sign-up.
-      allow create: if request.auth.uid == userId;
-
-      // A user can only update their own document.
-      allow update: if request.auth.uid == userId;
-      
-      // Deleting user role documents is not allowed from the client to prevent privilege escalation issues.
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId) && request.resource.data.keys().hasAll(['role']) && request.resource.data.role == 'student';
+      allow update: if isOwner(userId) && request.resource.data.role == resource.data.role; // Cannot change role
       allow delete: if false;
     }
     
     // --- Message Rules ---
     match /messages/{messageId} {
-        // Any authenticated user can create (send) a message.
-        allow create: if request.auth != null;
-        // Only admins can read or delete messages.
+        allow create: if isAuthenticated();
         allow read, delete: if isAdmin();
     }
     
-    // Admins need list access on the collection to fetch all messages for the dashboard.
     match /messages/{document=**} {
         allow list: if isAdmin();
     }
     
     // --- Payment Request Rules ---
     match /paymentRequests/{requestId} {
-        // Any authenticated user can create a payment request.
-        allow create: if request.auth != null;
-        // Only admins can read or update payment requests (to approve them).
+        allow create: if isAuthenticated();
         allow read, update: if isAdmin();
     }
 
-    // Admins need list access on the collection to fetch all payment requests.
     match /paymentRequests/{document=**} {
         allow list: if isAdmin();
     }
